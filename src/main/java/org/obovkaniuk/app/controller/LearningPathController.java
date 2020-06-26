@@ -1,8 +1,7 @@
 package org.obovkaniuk.app.controller;
 
 import org.obovkaniuk.app.dto.CourseDto;
-import org.obovkaniuk.app.dto.PersonDto;
-import org.obovkaniuk.app.entity.Course;
+import org.obovkaniuk.app.entity.LearningPath;
 import org.obovkaniuk.app.repository.CourseRepository;
 
 import javax.inject.Inject;
@@ -19,13 +18,13 @@ public class CourseController {
     CourseRepository courseRepository;
 
     @GET
-    public List<Course> getAll() {
+    public List<LearningPath> getAll() {
         return courseRepository.getAll();
     }
 
     @GET
     @Path("/{name}")
-    public Course getById(@PathParam("name") String name) {
+    public LearningPath getById(@PathParam("name") String name) {
         return courseRepository.findByName(name);
     }
 
