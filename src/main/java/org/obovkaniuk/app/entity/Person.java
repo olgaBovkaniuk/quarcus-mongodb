@@ -21,17 +21,17 @@ public class Person extends PanacheMongoEntityBase {
     @BsonProperty("last_name")
     private String lastName;
 
-    @BsonProperty("courses")
-    private List<Course> courseList;
+    @BsonProperty("person_learning_path")
+    private List<PersonLearningPath> learningPathList;
 
     public Person() {
     }
 
-    public Person(String personId, String firstName, String lastName, List<Course> courseList) {
+    public Person(String personId, String firstName, String lastName, List<PersonLearningPath> learningPathList) {
         this.personId = personId;
         this.firstName = firstName;
         this.lastName = lastName;
-        this.courseList = courseList;
+        this.learningPathList = learningPathList;
     }
 
     public String  getPersonId() {
@@ -58,12 +58,12 @@ public class Person extends PanacheMongoEntityBase {
         this.lastName = lastName;
     }
 
-    public List<Course> getCourseList() {
-        return courseList;
+    public List<PersonLearningPath> getLearningPathList() {
+        return learningPathList;
     }
 
-    public void setCourseList(List<Course> courseList) {
-        this.courseList = courseList;
+    public void setLearningPathList(List<PersonLearningPath> learningPathList) {
+        this.learningPathList = learningPathList;
     }
 
     @Override
@@ -73,11 +73,11 @@ public class Person extends PanacheMongoEntityBase {
         Person person = (Person) o;
         return Objects.equals(firstName, person.firstName) &&
                 Objects.equals(lastName, person.lastName) &&
-                Objects.equals(courseList, person.courseList);
+                Objects.equals(learningPathList, person.learningPathList);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(firstName, lastName, courseList);
+        return Objects.hash(firstName, lastName, learningPathList);
     }
 }

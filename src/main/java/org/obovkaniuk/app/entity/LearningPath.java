@@ -1,51 +1,64 @@
 package org.obovkaniuk.app.entity;
 
 import io.quarkus.mongodb.panache.MongoEntity;
-import io.quarkus.mongodb.panache.PanacheMongoEntity;
+import io.quarkus.mongodb.panache.PanacheMongoEntityBase;
+import org.bson.codecs.pojo.annotations.BsonId;
+import org.bson.codecs.pojo.annotations.BsonProperty;
 
 import java.util.Objects;
 
-@MongoEntity(collection = "course")
-public class Course extends PanacheMongoEntity {
+@MongoEntity(collection = "learning_path")
+public class LearningPath extends PanacheMongoEntityBase {
 
-    private String name;
-    private int mark;
+    @BsonProperty("learning_path_id")
+    @BsonId
+    private String learningPathId;
+    private LearningPathName name;
+    private String description;
 
-    public Course() {
+    public LearningPath() {
     }
 
-    public Course(String name, int mark) {
+    public LearningPath(LearningPathName name, String description) {
         this.name = name;
-        this.mark = mark;
+        this.description = description;
     }
 
-    public String getName() {
+    public String getLearningPathId() {
+        return learningPathId;
+    }
+
+    public void setLearningPathId(String learningPathId) {
+        this.learningPathId = learningPathId;
+    }
+
+    public LearningPathName getName() {
         return name;
     }
 
-    public void setName(String name) {
+    public void setName(LearningPathName name) {
         this.name = name;
     }
 
-    public int getMark() {
-        return mark;
+    public String  getDescription() {
+        return description;
     }
 
-    public void setMark(int mark) {
-        this.mark = mark;
+    public void setDescription(String  mark) {
+        this.description = description;
     }
 
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        Course course = (Course) o;
-        return mark == course.mark &&
-                Objects.equals(name, course.name);
+        LearningPath learningPath = (LearningPath) o;
+        return description == learningPath.description &&
+                Objects.equals(name, learningPath.name);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(name, mark);
+        return Objects.hash(name, description);
     }
 }

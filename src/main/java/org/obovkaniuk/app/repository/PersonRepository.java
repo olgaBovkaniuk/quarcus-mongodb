@@ -38,7 +38,7 @@ public class PersonRepository implements PanacheMongoRepositoryBase<Person, Stri
         Person person = findById(id);
         person.setFirstName(personDto.getFirstName());
         person.setLastName(personDto.getLastName());
-        person.setCourseList(personDto.getCourses());
+        person.setLearningPathList(personDto.getPersonLearningPaths());
         update(person);
     }
 }

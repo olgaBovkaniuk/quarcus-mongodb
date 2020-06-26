@@ -1,36 +1,37 @@
 package org.obovkaniuk.app.controller;
 
-import org.obovkaniuk.app.dto.CourseDto;
+import org.obovkaniuk.app.dto.LearningPathDto;
 import org.obovkaniuk.app.entity.LearningPath;
-import org.obovkaniuk.app.repository.CourseRepository;
+import org.obovkaniuk.app.entity.LearningPathName;
+import org.obovkaniuk.app.repository.LearningPathRepository;
 
 import javax.inject.Inject;
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import java.util.List;
 
-@Path("/course/api")
+@Path("/learning-path/api")
 @Produces(MediaType.APPLICATION_JSON)
 @Consumes(MediaType.APPLICATION_JSON)
-public class CourseController {
+public class LearningPathController {
 
     @Inject
-    CourseRepository courseRepository;
+    LearningPathRepository learningPathRepository;
 
     @GET
     public List<LearningPath> getAll() {
-        return courseRepository.getAll();
+        return learningPathRepository.getAll();
     }
 
     @GET
     @Path("/{name}")
-    public LearningPath getById(@PathParam("name") String name) {
-        return courseRepository.findByName(name);
+    public List<LearningPath> getById(@PathParam("name") LearningPathName name) {
+        return learningPathRepository.findByName(name);
     }
 
     @POST
-    public void add(CourseDto course) {
-        courseRepository.save(course);
+    public void add(LearningPathDto course) {
+        learningPathRepository.save(course);
     }
 
 }

@@ -1,23 +1,25 @@
 package org.obovkaniuk.app.dto;
 
-public class CourseDto {
+import org.obovkaniuk.app.entity.LearningPathName;
 
-    private String name;
-    private int mark;
+public class LearningPathDto {
 
-    public String getName() {
+    private LearningPathName name;
+    private String description;
+
+    public LearningPathName getName() {
         return name;
     }
 
-    public void setName(String name) {
+    public void setName(LearningPathName name) {
         this.name = name;
     }
 
-    public int getMark() {
-        return mark;
+    public String getDescription() {
+        return description;
     }
 
-    public void setMark(int mark) {
-        this.mark = mark;
+    public void setDescription(String description) {
+        this.description = description;
     }
 }

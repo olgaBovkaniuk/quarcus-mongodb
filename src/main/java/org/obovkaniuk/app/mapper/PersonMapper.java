@@ -11,11 +11,10 @@ public class PersonMapper {
 
     public Person mapToPerson(PersonDto dto) {
         Person person = new Person();
-        UUID uuid = UUID.randomUUID();
-        person.setPersonId(uuid.toString());
+        person.setPersonId(UUID.randomUUID().toString());
         person.setFirstName(dto.getFirstName());
         person.setLastName(dto.getLastName());
-        person.setCourseList(dto.getCourses());
+        person.setLearningPathList(dto.getPersonLearningPaths());
         return person;
     }
 }

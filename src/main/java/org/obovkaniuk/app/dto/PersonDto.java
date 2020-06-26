@@ -1,6 +1,6 @@
 package org.obovkaniuk.app.dto;
 
-import org.obovkaniuk.app.entity.Course;
+import org.obovkaniuk.app.entity.PersonLearningPath;
 
 import java.util.List;
 
@@ -8,7 +8,7 @@ public class PersonDto {
 
     private String firstName;
     private String lastName;
-    private List<Course> courses;
+    private List<PersonLearningPath> personLearningPaths;
 
     public String getFirstName() {
         return firstName;
@@ -26,11 +26,11 @@ public class PersonDto {
         this.lastName = lastName;
     }
 
-    public List<Course> getCourses() {
-        return courses;
+    public List<PersonLearningPath> getPersonLearningPaths() {
+        return personLearningPaths;
     }
 
-    public void setCourses(List<Course> courses) {
-        this.courses = courses;
+    public void setPersonLearningPaths(List<PersonLearningPath> learningPaths) {
+        this.personLearningPaths = learningPaths;
     }
 }

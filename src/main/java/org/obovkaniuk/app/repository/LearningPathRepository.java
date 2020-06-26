@@ -1,31 +1,33 @@
 package org.obovkaniuk.app.repository;
 
-import io.quarkus.mongodb.panache.PanacheMongoRepository;
-import org.obovkaniuk.app.dto.CourseDto;
+import io.quarkus.mongodb.panache.PanacheMongoRepositoryBase;
+import org.obovkaniuk.app.dto.LearningPathDto;
 import org.obovkaniuk.app.entity.LearningPath;
-import org.obovkaniuk.app.mapper.CourseMapper;
+import org.obovkaniuk.app.entity.LearningPathName;
+import org.obovkaniuk.app.mapper.LearningPathMapper;
 
 import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @ApplicationScoped
-public class CourseRepository implements PanacheMongoRepository<LearningPath> {
+public class LearningPathRepository implements PanacheMongoRepositoryBase<LearningPath, String> {
 
     @Inject
-    CourseMapper courseMapper;
+    LearningPathMapper learningPathMapper;
 
-    public LearningPath findByName(String name) {
-        return find("name", name).firstResult();
+    public List<LearningPath> findByName(LearningPathName name) {
+        return find("name", name).list();
     }
 
     public List<LearningPath> getAll() {
         return findAll().list();
     }
 
-    public void save(CourseDto course) {
-        courseMapper
-                .mapToCourse(course)
+    public void save(LearningPathDto course) {
+        learningPathMapper
+                .mapToLearningPath(course)
                 .persist();
     }
 }
