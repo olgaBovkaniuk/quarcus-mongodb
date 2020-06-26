@@ -10,15 +10,6 @@ public class PersonDto {
     private String lastName;
     private List<Course> courses;
 
-    public PersonDto() {
-    }
-
-    public PersonDto(String firstName, String lastName, List<Course> courses) {
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.courses = courses;
-    }
-
     public String getFirstName() {
         return firstName;
     }

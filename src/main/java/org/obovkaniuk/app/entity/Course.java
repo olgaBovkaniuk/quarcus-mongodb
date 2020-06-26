@@ -1,11 +1,12 @@
 package org.obovkaniuk.app.entity;
 
 import io.quarkus.mongodb.panache.MongoEntity;
+import io.quarkus.mongodb.panache.PanacheMongoEntity;
 
 import java.util.Objects;
 
 @MongoEntity(collection = "course")
-public class Course {
+public class Course extends PanacheMongoEntity {
 
     private String name;
     private int mark;
