@@ -1,34 +1,39 @@
 package org.obovkaniuk.app.entity;
 
 import io.quarkus.mongodb.panache.MongoEntity;
-import io.quarkus.mongodb.panache.PanacheMongoEntityBase;
-import org.bson.codecs.pojo.annotations.BsonId;
 import org.bson.codecs.pojo.annotations.BsonProperty;
+import org.bson.types.ObjectId;
 
+import java.util.List;
 import java.util.Objects;
 
 @MongoEntity(collection = "learning_path")
-public class LearningPath extends PanacheMongoEntityBase {
+public class LearningPath {
 
     @BsonProperty("learning_path_id")
-    @BsonId
-    private String learningPathId;
+    private ObjectId learningPathId;
     private LearningPathName name;
     private String description;
+    private String image;
+    private String link;
+    private List<Material> materialList;
 
     public LearningPath() {
     }
 
-    public LearningPath(LearningPathName name, String description) {
+    public LearningPath(LearningPathName name, String description, String image, String link, List<Material> materialList) {
         this.name = name;
         this.description = description;
+        this.image = image;
+        this.link = link;
+        this.materialList = materialList;
     }
 
-    public String getLearningPathId() {
+    public ObjectId getLearningPathId() {
         return learningPathId;
     }
 
-    public void setLearningPathId(String learningPathId) {
+    public void setLearningPathId(ObjectId learningPathId) {
         this.learningPathId = learningPathId;
     }
 
@@ -46,6 +51,30 @@ public class LearningPath extends PanacheMongoEntityBase {
 
     public void setDescription(String  mark) {
         this.description = description;
+    }
+
+    public String getImage() {
+        return image;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
+    }
+
+    public String getLink() {
+        return link;
+    }
+
+    public void setLink(String link) {
+        this.link = link;
+    }
+
+    public List<Material> getMaterialList() {
+        return materialList;
+    }
+
+    public void setMaterialList(List<Material> materialList) {
+        this.materialList = materialList;
     }
 
     @Override

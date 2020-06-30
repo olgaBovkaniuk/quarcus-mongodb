@@ -26,8 +26,8 @@ public class LearningPathRepository implements PanacheMongoRepositoryBase<Learni
     }
 
     public void save(LearningPathDto course) {
-        learningPathMapper
-                .mapToLearningPath(course)
-                .persist();
+        LearningPath learningPath = learningPathMapper
+                .mapToLearningPath(course);
+        persist(learningPath);
     }
 }
